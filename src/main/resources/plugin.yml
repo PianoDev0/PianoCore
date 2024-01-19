@@ -44,4 +44,14 @@ commands:
     usage: /<command>
     permission: pianocore.gm
     permission-message: 'Na toto nemáš permise!'
+  fly:
+    description: 'zapne/vypne létání'
+    usage: /<command>
+    permission: pianocore.fly
+    permission-message: 'Na toto nemáš permise!'
+  flyspeed:
+    description: 'nastaví rychlost létání'
+    usage: /<command> <rychlost>
+    permission: pianocore.flyspeed
+    permission-message: 'Na toto nemáš permise!'
 
