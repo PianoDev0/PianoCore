@@ -39,18 +39,14 @@ public final class PianoCore extends JavaPlugin {
                 p.sendMessage(ChatColor.BLUE + "Pozvánka na náš server: https://discord.gg/...");
                 return true;
             }
-        }
-        // /ping
-        else if (command.getName().equalsIgnoreCase("ping")) {
+        } else if (command.getName().equalsIgnoreCase("ping")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 int ping = p.getPing();
                 p.sendMessage(ChatColor.BLUE + "Ping: " + ping + "ms");
                 return true;
             }
-        }
-        // /godmode
-        else if (command.getName().equalsIgnoreCase("godmode")) {
+        } else if (command.getName().equalsIgnoreCase("godmode")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
@@ -80,9 +76,7 @@ public final class PianoCore extends JavaPlugin {
                     return true;
                 }
             }
-        }
-        // /vanish
-        else if (command.getName().equalsIgnoreCase("vanish")) {
+        } else if (command.getName().equalsIgnoreCase("vanish")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
@@ -94,8 +88,7 @@ public final class PianoCore extends JavaPlugin {
                         p.sendMessage(ChatColor.GREEN + "Vanish byl zapnut!");
                     }
                     return true;
-                }           
-                else if (args.length == 1) {
+                } else if (args.length == 1) {
                     String playerName = args[0];
                     Player target = Bukkit.getServer().getPlayerExact(playerName);
 
@@ -113,13 +106,12 @@ public final class PianoCore extends JavaPlugin {
                     return true;
                 }
             }
-        }
-        // /heal
-        else if (command.getName().equalsIgnoreCase("heal")) {
+        } else if (command.getName().equalsIgnoreCase("heal")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
                     p.setHealth(20.0);
+                    p.setFoodLevel(20);
                     p.sendMessage(ChatColor.GREEN + "Byl jsi úspěšně dohealován!");
                 } else if (args.length == 1) {
                     String playerName = args[0];
@@ -129,14 +121,13 @@ public final class PianoCore extends JavaPlugin {
                         p.sendMessage("Tento hráč není online!");
                     } else {
                         target.setHealth(20.0);
+                        target.setFoodLevel(20);
                         p.sendMessage(ChatColor.GREEN + "Hráč " + target.getName() + " byl úspěšně dohealován!");
                     }
                 }
                 return true;
             }
-        }
-        // /gmc
-        else if (command.getName().equalsIgnoreCase("gmc")) {
+        } else if (command.getName().equalsIgnoreCase("gmc")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
@@ -155,9 +146,7 @@ public final class PianoCore extends JavaPlugin {
                 }
                 return true;
             }
-        }
-        // /gms
-        else if (command.getName().equalsIgnoreCase("gms")) {
+        } else if (command.getName().equalsIgnoreCase("gms")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
@@ -176,9 +165,7 @@ public final class PianoCore extends JavaPlugin {
                 }
                 return true;
             }
-        }
-        // /gmsp
-        else if (command.getName().equalsIgnoreCase("gmsp")) {
+        } else if (command.getName().equalsIgnoreCase("gmsp")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
@@ -197,6 +184,62 @@ public final class PianoCore extends JavaPlugin {
                 }
                 return true;
             }
+        } else if (command.getName().equalsIgnoreCase("fly")) {
+            if (sender instanceof Player p) {
+                if (args.length == 0) {
+                if (p.getAllowFlight()) {
+                    p.setAllowFlight(false);
+                    p.setFlying(false);
+                    p.sendMessage(ChatColor.RED + "Létání bylo vypnuto!");
+                } else {
+                    p.setAllowFlight(true);
+                    p.setFlying(true);
+                    p.sendMessage(ChatColor.GREEN + "Létání bylo zapnuto!");
+                }
+                    }else{
+                    String playerName = args[0];
+                    Player target = Bukkit.getServer().getPlayerExact(playerName);
+
+                    if (target == null) {
+                        p.sendMessage("Tento hráč není online!");
+                    } else {
+                        target.setGameMode(GameMode.SPECTATOR);
+                        p.sendMessage(ChatColor.GREEN + "Nastaveno na spectator pro hráče " + target.getName() + "!");
+                        if (target.getAllowFlight()) {
+                            target.setAllowFlight(false);
+                            target.setFlying(false);
+                            p.sendMessage(ChatColor.RED + "Létání bylo vypnuto!");
+                        } else {
+                            target.setAllowFlight(true);
+                            target.setFlying(true);
+                            p.sendMessage(ChatColor.GREEN + "Létání bylo zapnuto!");
+                    }
+                }
+                }
+                return true;
+            }
+        }
+        // /flyspeed
+        else if (command.getName().equalsIgnoreCase("flyspeed")) {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
+                if (args.length == 1) {
+                    try {
+                        float speed = Float.parseFloat(args[0]);
+                        if (speed >= 0.1 && speed <= 10) {
+                            p.setFlySpeed(speed / 10);
+                            p.sendMessage(ChatColor.GREEN + "Rychlost létání byla nastavena na " + args[0] + "!");
+                        } else {
+                            p.sendMessage(ChatColor.RED + "Zadejte platnou rychlost od 1 do 10!");
+                        }
+                    } catch (NumberFormatException e) {
+                        p.sendMessage(ChatColor.RED + "Zadejte platnou rychlost od 1 do 10!");
+                    }
+                } else {
+                    p.sendMessage(ChatColor.RED + "Použití: /flyspeed <rychlost>");
+                }
+                return true;
+            }
         }
         return false;
     }
@@ -206,4 +249,5 @@ public final class PianoCore extends JavaPlugin {
         // Plugin shutdown logic
     }
 }
+
 
