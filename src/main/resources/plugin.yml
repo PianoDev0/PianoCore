@@ -1,0 +1,47 @@
+name: PianoCore
+version: '${project.version}'
+main: org.piano.joinleave.system.PianoCore
+api-version: '1.19'
+commands:
+  die:
+    description: 'Jednoduchá cesta se zabít'
+    permission: pianocore.die
+    permission-message: 'Na toto nemáš permise!'
+    usage: /<command>
+  discord:
+    description: 'Discord Invite'
+    usage: /<command>
+  ping:
+    description: 'vypíše ping serveru'
+    usage: /<command>
+  godmode:
+    description: 'zapne godmode'
+    usage: /<command>
+    permission: pianocore.godmode
+    permission-message: 'Na toto nemáš permise!'
+  vanish:
+    description: 'zapne vanish'
+    usage: /<command>
+    permission: pianocore.vanish
+    permission-message: 'Na toto nemáš permise!'
+  heal:
+    description: 'vyhealuje hráče'
+    usage: /<command>
+    permission: pianocore.heal
+    permission-message: 'Na toto nemáš permise!'
+  gmc:
+    description: 'nastaví creative'
+    usage: /<command>
+    permission: pianocore.gm
+    permission-message: 'Na toto nemáš permise!'
+  gms:
+    description: 'nastaví survival'
+    usage: /<command>
+    permission: pianocore.gm
+    permission-message: 'Na toto nemáš permise!'
+  gmsp:
+    description: 'nastaví spectator'
+    usage: /<command>
+    permission: pianocore.gm
+    permission-message: 'Na toto nemáš permise!'
+
