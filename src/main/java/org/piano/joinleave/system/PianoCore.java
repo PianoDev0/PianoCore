@@ -1,11 +1,6 @@
 package org.piano.joinleave.system;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.piano.joinleave.commands.*;
@@ -34,6 +29,9 @@ public final class PianoCore extends JavaPlugin {
         getCommand("die").setExecutor(new Other());
         getCommand("ping").setExecutor(new Other());
         getCommand("discord").setExecutor(new Other());
+        getCommand("web").setExecutor(new Other());
+        getCommand("about").setExecutor(new Other());
+        getCommand("inventory").setExecutor(new Inventory());
 
 
 

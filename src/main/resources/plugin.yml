@@ -54,4 +54,15 @@ commands:
     usage: /<command> <rychlost>
     permission: pianocore.flyspeed
     permission-message: 'Na toto nemáš permise!'
+  about:
+    description: 'Napíše info o pluginu'
+    usage: /<command>
+  web:
+    description: 'Odkaz na náš web'
+    usage: /<command>
+  inventory:
+    description: 'Otevře inventář hráče'
+    usage: /<command>
+    permission: pianocore.inventory
+    permission-message: 'Na toto nemáš oprávnění!'
 
