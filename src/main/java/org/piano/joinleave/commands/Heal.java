@@ -24,8 +24,8 @@ public class Heal implements CommandExecutor {
                         return true;
                     }
                 } else {
-                    p.setHealth(20.0);
-                    p.setFoodLevel(30);
+                    p.setHealth(p.getMaxHealth());
+                    p.setFoodLevel(40);
                     p.sendMessage(ChatColor.GREEN + "Byl jsi úspěšně dohealován!");
                     return true;
                 }
@@ -45,7 +45,7 @@ public class Heal implements CommandExecutor {
             }
 
             if (target != null) {
-                target.setHealth(20.0);
+                target.setHealth(target.getMaxHealth());
                 target.setFoodLevel(30);
                 sender.sendMessage(ChatColor.GREEN + "Hráč " + target.getName() + " byl úspěšně dohealován!");
                 return true;
