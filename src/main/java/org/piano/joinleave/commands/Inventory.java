@@ -11,7 +11,7 @@ public class Inventory implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("inventory")) {
-            if (sender instanceof Player) {
+            if (sender instanceof Player ) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
                     p.openInventory(p.getInventory());

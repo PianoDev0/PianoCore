@@ -65,4 +65,29 @@ commands:
     usage: /<command>
     permission: pianocore.inventory
     permission-message: 'Na toto nemáš oprávnění!'
+  help:
+    description: 'Vypíše příkazy'
+    usage: /<command>
+    permission: pianocore.help
+    permission-message: 'Na toto nemáš oprávnění!'
+  sun:
+    description: 'Nastaví slunečno'
+    usage: /<command>
+    permission: pianocore.weather
+    permission-message: 'Na toto nemáš oprávnění!'
+  thunder:
+    description: 'Nastaví bouřku'
+    usage: /<command>
+    permission: pianocore.weather
+    permission-message: 'Na toto nemáš oprávnění!'
+  day:
+    description: 'Nastaví den'
+    usage: /<command>
+    permission: pianocore.time
+    permission-message: 'Na toto nemáš oprávnění!'
+  night:
+    description: 'Nastaví noc'
+    usage: /<command>
+    permission: pianocore.time
+    permission-message: 'Na toto nemáš oprávnění!'
 
