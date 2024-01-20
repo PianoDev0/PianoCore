@@ -31,7 +31,6 @@ public class Help implements CommandExecutor {
                 sender.sendMessage(ChatColor.GOLD + "/thunder" + ChatColor.WHITE + " - Nastaví počasí na bouřku");
                 sender.sendMessage(ChatColor.GOLD + "/day" + ChatColor.WHITE + " - Nastaví den");
                 sender.sendMessage(ChatColor.GOLD + "/night" + ChatColor.WHITE + " - Nastaví noc");
-
             } else {
                 sender.sendMessage(ChatColor.RED + "Tento příkaz může použít pouze hráč v hře nebo konzole.");
             }

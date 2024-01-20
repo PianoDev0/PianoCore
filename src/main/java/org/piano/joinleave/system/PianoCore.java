@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.piano.joinleave.commands.*;
+import org.piano.joinleave.events.DeathMessage;
 import org.piano.joinleave.events.PlayerConnection;
 
 public final class PianoCore extends JavaPlugin {
@@ -18,6 +19,7 @@ public final class PianoCore extends JavaPlugin {
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerConnection(), PianoCore.Instance);
+        pm.registerEvents(new DeathMessage(), PianoCore.Instance);
 
         getCommand("godmode").setExecutor(new GodMode());
         getCommand("gmc").setExecutor(new Gamemodes());
