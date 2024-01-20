@@ -7,6 +7,8 @@ import org.piano.joinleave.commands.*;
 import org.piano.joinleave.events.DeathMessage;
 import org.piano.joinleave.events.PlayerConnection;
 
+import javax.security.auth.login.LoginException;
+
 public final class PianoCore extends JavaPlugin {
 
     public static PianoCore Instance;
@@ -16,6 +18,7 @@ public final class PianoCore extends JavaPlugin {
         // Plugin startup logic
         Instance = this;
         Bukkit.getConsoleSender().sendMessage("[PianoCore] Plugin byl správně načten!!");
+
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerConnection(), PianoCore.Instance);
@@ -39,9 +42,9 @@ public final class PianoCore extends JavaPlugin {
         getCommand("night").setExecutor(new Time());
         getCommand("sun").setExecutor(new Weather());
         getCommand("thunder").setExecutor(new Weather());
-
-
-
+        getCommand("home").setExecutor(new Home());
+        getCommand("freeze").setExecutor(new Freeze());
+        getCommand("rules").setExecutor(new Rules());
     }
     @Override
     public void onDisable() {

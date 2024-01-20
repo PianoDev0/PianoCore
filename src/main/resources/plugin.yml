@@ -90,4 +90,14 @@ commands:
     usage: /<command>
     permission: pianocore.time
     permission-message: 'Na toto nemáš oprávnění!'
-
+  home:
+    description: 'Teleportuje vás k domu'
+    usage: /<command>
+  freeze:
+    description: 'Zamrazí hráče'
+    usage: /<command>
+    permission: pianocore.freeze
+    permission-message: 'Na toto nemáš oprávnění!'
+  rules:
+    description: 'Vypíše pravidla'
+    usage: /<command>
