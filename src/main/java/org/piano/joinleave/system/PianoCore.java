@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.piano.joinleave.commands.*;
 import org.piano.joinleave.events.PlayerConnection;
 
 public final class PianoCore extends JavaPlugin {
@@ -22,228 +23,21 @@ public final class PianoCore extends JavaPlugin {
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerConnection(), PianoCore.Instance);
+
+        getCommand("godmode").setExecutor(new GodMode());
+        getCommand("gmc").setExecutor(new Gamemodes());
+        getCommand("gms").setExecutor(new Gamemodes());
+        getCommand("gmsp").setExecutor(new Gamemodes());
+        getCommand("fly").setExecutor(new Fly());
+        getCommand("heal").setExecutor(new Heal());
+        getCommand("flyspeed").setExecutor(new Flyspeed());
+        getCommand("die").setExecutor(new Other());
+        getCommand("ping").setExecutor(new Other());
+        getCommand("discord").setExecutor(new Other());
+
+
+
     }
-
-    @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("die")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                p.setHealth(0.0);
-                p.sendMessage(ChatColor.RED + "Úspěšně sis vzal život!");
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("discord")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                p.sendMessage(ChatColor.BLUE + "Pozvánka na náš server: https://discord.gg/...");
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("ping")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                int ping = p.getPing();
-                p.sendMessage(ChatColor.BLUE + "Ping: " + ping + "ms");
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("godmode")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    if (p.isInvulnerable()) {
-                        p.setInvulnerable(false);
-                        p.sendMessage(ChatColor.RED + "GodMode byl vypnut!");
-                    } else {
-                        p.setInvulnerable(true);
-                        p.sendMessage(ChatColor.GREEN + "GodMode byl zapnut!");
-                    }
-                    return true;
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        if (target.isInvulnerable()) {
-                            target.setInvulnerable(false);
-                            p.sendMessage(ChatColor.RED + "GodMode byl vypnut pro hráče " + target.getName() + "!");
-                        } else {
-                            target.setInvulnerable(true);
-                            p.sendMessage(ChatColor.GREEN + "GodMode byl zapnut pro hráče " + target.getName() + "!");
-                        }
-                    }
-                    return true;
-                }
-            }
-        } else if (command.getName().equalsIgnoreCase("vanish")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    if (p.isInvisible()) {
-                        p.setInvisible(false);
-                        p.sendMessage(ChatColor.RED + "Vanish byl vypnut!");
-                    } else {
-                        p.setInvisible(true);
-                        p.sendMessage(ChatColor.GREEN + "Vanish byl zapnut!");
-                    }
-                    return true;
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        if (target.isInvisible()) {
-                            target.setInvisible(false);
-                            p.sendMessage(ChatColor.RED + "Vanish byl vypnut pro hráče " + target.getName() + "!");
-                        } else {
-                            target.setInvisible(true);
-                            p.sendMessage(ChatColor.GREEN + "Vanish byl zapnut pro hráče " + target.getName() + "!");
-                        }
-                    }
-                    return true;
-                }
-            }
-        } else if (command.getName().equalsIgnoreCase("heal")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    p.setHealth(20.0);
-                    p.setFoodLevel(20);
-                    p.sendMessage(ChatColor.GREEN + "Byl jsi úspěšně dohealován!");
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        target.setHealth(20.0);
-                        target.setFoodLevel(20);
-                        p.sendMessage(ChatColor.GREEN + "Hráč " + target.getName() + " byl úspěšně dohealován!");
-                    }
-                }
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("gmc")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    p.setGameMode(GameMode.CREATIVE);
-                    p.sendMessage(ChatColor.GREEN + "Nastaveno na creative!");
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        target.setGameMode(GameMode.CREATIVE);
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na creative pro hráče " + target.getName() + "!");
-                    }
-                }
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("gms")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    p.setGameMode(GameMode.SURVIVAL);
-                    p.sendMessage(ChatColor.GREEN + "Nastaveno na survival!");
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        target.setGameMode(GameMode.SURVIVAL);
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na survival pro hráče " + target.getName() + "!");
-                    }
-                }
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("gmsp")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 0) {
-                    p.setGameMode(GameMode.SPECTATOR);
-                    p.sendMessage(ChatColor.GREEN + "Nastaveno na spectator!");
-                } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na spectator pro hráče " + target.getName() + "!");
-                    }
-                }
-                return true;
-            }
-        } else if (command.getName().equalsIgnoreCase("fly")) {
-            if (sender instanceof Player p) {
-                if (args.length == 0) {
-                if (p.getAllowFlight()) {
-                    p.setAllowFlight(false);
-                    p.setFlying(false);
-                    p.sendMessage(ChatColor.RED + "Létání bylo vypnuto!");
-                } else {
-                    p.setAllowFlight(true);
-                    p.setFlying(true);
-                    p.sendMessage(ChatColor.GREEN + "Létání bylo zapnuto!");
-                }
-                    }else{
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
-
-                    if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
-                    } else {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na spectator pro hráče " + target.getName() + "!");
-                        if (target.getAllowFlight()) {
-                            target.setAllowFlight(false);
-                            target.setFlying(false);
-                            p.sendMessage(ChatColor.RED + "Létání bylo vypnuto!");
-                        } else {
-                            target.setAllowFlight(true);
-                            target.setFlying(true);
-                            p.sendMessage(ChatColor.GREEN + "Létání bylo zapnuto!");
-                    }
-                }
-                }
-                return true;
-            }
-        }
-        // /flyspeed
-        else if (command.getName().equalsIgnoreCase("flyspeed")) {
-            if (sender instanceof Player) {
-                Player p = (Player) sender;
-                if (args.length == 1) {
-                    try {
-                        float speed = Float.parseFloat(args[0]);
-                        if (speed >= 0.1 && speed <= 10) {
-                            p.setFlySpeed(speed / 10);
-                            p.sendMessage(ChatColor.GREEN + "Rychlost létání byla nastavena na " + args[0] + "!");
-                        } else {
-                            p.sendMessage(ChatColor.RED + "Zadejte platnou rychlost od 1 do 10!");
-                        }
-                    } catch (NumberFormatException e) {
-                        p.sendMessage(ChatColor.RED + "Zadejte platnou rychlost od 1 do 10!");
-                    }
-                } else {
-                    p.sendMessage(ChatColor.RED + "Použití: /flyspeed <rychlost>");
-                }
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public void onDisable() {
         // Plugin shutdown logic

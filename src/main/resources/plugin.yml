@@ -4,7 +4,7 @@ main: org.piano.joinleave.system.PianoCore
 api-version: '1.19'
 commands:
   die:
-    description: 'Jednoduchá cesta se zabít'
+    description: 'Jednoduchá cesta jak si vzít život'
     permission: pianocore.die
     permission-message: 'Na toto nemáš permise!'
     usage: /<command>
@@ -27,7 +27,7 @@ commands:
   heal:
     description: 'vyhealuje hráče'
     usage: /<command>
-    permission: pianocore.heal
+    permission: pianocore.Heal
     permission-message: 'Na toto nemáš permise!'
   gmc:
     description: 'nastaví creative'

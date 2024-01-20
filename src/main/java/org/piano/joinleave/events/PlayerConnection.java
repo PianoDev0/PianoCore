@@ -11,7 +11,7 @@ public class PlayerConnection implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        e.setJoinMessage("§2§lHráč " + p.getName() + "§2§lse připojil!");
+        e.setJoinMessage("§2§lHráč " + p.getName() + "§2§l se připojil!");
     }
 
     @EventHandler
