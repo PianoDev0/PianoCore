@@ -14,8 +14,8 @@ rules:
 death-message-format: "&c{player} zemřel {cause}"
 
 # JOIN/LEAVE MESSAGE
-join-message-format: "&2&lHráč {player} se připojil!"
-quit-message-format: "&4&lHráč {player} se odpojil."
+join-message-format: "§2§lHráč {player} se připojil!"
+quit-message-format: "§4§lHráč {player} se odpojil."
 
 # FLY A FLYSPEED
 fly-on-message: "&aLétání bylo zapnuto pro hráče {player}!"
