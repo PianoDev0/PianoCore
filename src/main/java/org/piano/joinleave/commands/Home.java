@@ -28,7 +28,7 @@ public class Home implements CommandExecutor {
             if (args.length == 0) {
                 if (playerHomes.containsKey(playerUUID)) {
                     player.teleport(playerHomes.get(playerUUID));
-                    player.sendMessage(ChatColor.GREEN + "Teleportován(a) jsi na svůj domov.");
+                    player.sendMessage(ChatColor.GREEN + "Teleportován(a) na svůj domov.");
                 } else {
                     player.sendMessage(ChatColor.RED + "Nejprve si nastav svůj domov pomocí /home set.");
                 }
