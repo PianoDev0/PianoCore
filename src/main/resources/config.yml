@@ -61,7 +61,7 @@ godmode-disabled-message-other: "&cGodMode byl vypnut pro hráče {player}!"
 godmode-player-not-online: "&cTento hráč není online!"
 godmode-usage-message: "&cPoužití: /godmode [hráč]"
 
-#HELP
+# HELP
 help-command-title: "&aSeznam příkazů:"
 help-command-list:
   - "&6/die &7- Jednoduchá cesta jak si vzít život"
