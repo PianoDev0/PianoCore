@@ -18,6 +18,8 @@ join-message-format: "&2&lHráč {player} se připojil!"
 quit-message-format: "&4&lHráč {player} se odpojil."
 
 # FLY A FLYSPEED
+fly-self-on-message: "&aLetání bylo úspěšně zapnuto !"
+fly-self-off-message: "&cLetání bylo úspěšně vypnuto pro vás!"
 fly-on-message: "&aLétání bylo zapnuto pro hráče {player}!"
 fly-off-message: "&cLétání bylo vypnuto pro hráče {player}!"
 flyspeed-set-message: "&aRychlost létání byla nastavena na {speed}!"
