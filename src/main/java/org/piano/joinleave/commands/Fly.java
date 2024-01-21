@@ -47,17 +47,8 @@ public class Fly implements CommandExecutor {
         } else {
             target.setAllowFlight(true);
             target.setFlying(true);
-            if (sender.equals(target)) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly-self-on-message")));
-            } else {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly-on-message"))
-                        .replace("{player}", target.getName()));
-            }
-        }
-
-        if (!target.getAllowFlight() && sender.equals(target)) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly-self-off-message")));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("fly-on-message"))
+                    .replace("{player}", target.getName()));
         }
     }
 }
-
