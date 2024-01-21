@@ -8,24 +8,34 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.command.ConsoleCommandSender;
+import org.piano.joinleave.system.PianoCore;
 
 public class Time implements CommandExecutor {
+
+    private final PianoCore plugin;
+
+    public Time(PianoCore plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if ((command.getName().equalsIgnoreCase("day") || command.getName().equalsIgnoreCase("night"))) {
             if (sender instanceof Player || sender instanceof ConsoleCommandSender) {
                 Player p = (sender instanceof Player) ? (Player) sender : null;
 
-
                 World world = (p != null) ? p.getWorld() : Bukkit.getWorlds().get(0);
 
-                long time = (command.getName().equalsIgnoreCase("day")) ? 0 : 13000;
+                boolean isDayCommand = command.getName().equalsIgnoreCase("day");
+                long time = isDayCommand ? 0 : 13000;
                 world.setTime(time);
 
+                String timeType = isDayCommand ? "day" : "night";
+
                 if (p != null) {
-                    p.sendMessage(ChatColor.GREEN + "Čas nastaven na " + ((time == 0) ? "denní" : "noční") + "!");
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("time-set-message-" + timeType)));
                 } else {
-                    sender.sendMessage(ChatColor.GREEN + "Čas nastaven na " + ((time == 0) ? "denní" : "noční") + "!");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("time-set-message-" + timeType)));
                 }
 
                 return true;
@@ -34,4 +44,3 @@ public class Time implements CommandExecutor {
         return false;
     }
 }
-

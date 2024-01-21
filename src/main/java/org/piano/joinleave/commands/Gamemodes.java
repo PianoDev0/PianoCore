@@ -8,8 +8,16 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.command.ConsoleCommandSender;
+import org.piano.joinleave.system.PianoCore;
 
 public class Gamemodes implements CommandExecutor {
+
+    private final PianoCore plugin;
+
+    public Gamemodes(PianoCore plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if ((command.getName().equalsIgnoreCase("gmc") || command.getName().equalsIgnoreCase("gms") || command.getName().equalsIgnoreCase("gmsp"))) {
@@ -29,9 +37,13 @@ public class Gamemodes implements CommandExecutor {
                     setGameMode(p, targetGameMode);
 
                     if (p != null) {
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na " + targetGameMode.toString().toLowerCase() + "!");
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gamemode-set-message"))
+                                .replace("{player}", p.getName())
+                                .replace("{gamemode}", targetGameMode.toString().toLowerCase()));
                     } else {
-                        sender.sendMessage(ChatColor.GREEN + "Nastaveno na " + targetGameMode.toString().toLowerCase() + "!");
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gamemode-set-message"))
+                                .replace("{player}", "Console")
+                                .replace("{gamemode}", targetGameMode.toString().toLowerCase()));
                     }
 
                     return true;
@@ -40,7 +52,7 @@ public class Gamemodes implements CommandExecutor {
                     Player target = Bukkit.getServer().getPlayerExact(playerName);
 
                     if (target == null) {
-                        sender.sendMessage("Tento hráč není online!");
+                        sender.sendMessage(ChatColor.RED + "Tento hráč není online!");
                         return true;
                     }
 
@@ -56,9 +68,13 @@ public class Gamemodes implements CommandExecutor {
                     setGameMode(target, targetGameMode);
 
                     if (p != null) {
-                        p.sendMessage(ChatColor.GREEN + "Nastaveno na " + targetGameMode.toString().toLowerCase() + " pro hráče " + target.getName() + "!");
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gamemode-set-message-other"))
+                                .replace("{player}", target.getName())
+                                .replace("{gamemode}", targetGameMode.toString().toLowerCase()));
                     } else {
-                        sender.sendMessage(ChatColor.GREEN + "Nastaveno na " + targetGameMode.toString().toLowerCase() + " pro hráče " + target.getName() + "!");
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("gamemode-set-message-other"))
+                                .replace("{player}", target.getName())
+                                .replace("{gamemode}", targetGameMode.toString().toLowerCase()));
                     }
 
                     return true;

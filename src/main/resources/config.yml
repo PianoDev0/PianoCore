@@ -1,0 +1,114 @@
+
+# PRAVIDLA SERVERU
+rules:
+  - "&6&lPravidla Serveru"
+  - "&e "
+  - "&e 1. Respektuj ostatní hráče."
+  - "&e 2. Nepoužívej cheaty ani hacky."
+  - "&e 3. Nedělej spam nebo reklamu."
+  - "&e 4. Nenič a nebourej cizích staveb."
+  - "&e 5. Dodržuj obecná pravidla chování."
+
+
+# DEATH MESSAGE
+death-message-format: "&c{player} zemřel {cause}"
+
+# JOIN/LEAVE MESSAGE
+join-message-format: "&2&lHráč {player} se připojil!"
+quit-message-format: "&4&lHráč {player} se odpojil."
+
+# FLY A FLYSPEED
+fly-on-message: "&aLétání bylo zapnuto pro hráče {player}!"
+fly-off-message: "&cLétání bylo vypnuto pro hráče {player}!"
+flyspeed-set-message: "&aRychlost létání byla nastavena na {speed}!"
+
+#GAMEMODY
+gamemode-set-message: "&aNastaveno na {gamemode}!"
+gamemode-set-message-other: "&aNastaveno na {gamemode} pro hráče {player}!"
+
+
+# VANISH
+vanish-on-message: "&aVanish byl zapnut pro hráče {player}!"
+vanish-off-message: "&cVanish byl vypnut pro hráče {player}!"
+
+# ČAS
+time-set-message-day: "&aČas nastaven na denní!"
+time-set-message-night: "&aČas nastaven na noční!"
+
+# POČASÍ
+weather-set-message-sunny: "&aPočasí nastaveno na slunečné!"
+weather-set-message-stormy: "&aPočasí nastaveno na bouřlivé!"
+
+# INVENTORY
+inventory-open-message-self: "&aOtevíráš svůj inventář."
+inventory-open-message-other: "&aOtevíráš inventář hráče {player}."
+inventory-player-not-online: "&cTento hráč není online!"
+inventory-usage-message: "&cPoužití: /inventory [hráč]"
+
+# FREEZE
+freeze-frozen-message: "&aHráč {player} byl zamrazen."
+freeze-unfrozen-message: "&aHráč {player} byl odmrazen."
+freeze-player-not-online: "&cHráč s tímto jménem není online."
+freeze-usage-message: "&cPoužití: /freeze <hráč>"
+
+# GODMODE
+godmode-enabled-message: "&aGodMode byl zapnut!"
+godmode-disabled-message: "&cGodMode byl vypnut!"
+godmode-enabled-message-other: "&aGodMode byl zapnut pro hráče {player}!"
+godmode-disabled-message-other: "&cGodMode byl vypnut pro hráče {player}!"
+godmode-player-not-online: "&cTento hráč není online!"
+godmode-usage-message: "&cPoužití: /godmode [hráč]"
+
+#HELP
+help-command-title: "&aSeznam příkazů:"
+help-command-list:
+  - "&6/die &7- Jednoduchá cesta jak si vzít život"
+  - "&6/discord &7- Discord Invite"
+  - "&6/ping &7- Vypíše ping serveru"
+  - "&6/godmode &7- Zapne godmode"
+  - "&6/vanish &7- Zapne vanish"
+  - "&6/heal &7- Vyhealuje hráče"
+  - "&6/gmc &7- Nastaví creative"
+  - "&6/gms &7- Nastaví survival"
+  - "&6/gmsp &7- Nastaví spectator"
+  - "&6/fly &7- Zapne/vypne létání"
+  - "&6/flyspeed &7- Nastaví rychlost létání"
+  - "&6/about &7- Napíše info o pluginu"
+  - "&6/web &7- Odkaz na náš web"
+  - "&6/inventory &7- Otevře inventář hráče"
+  - "&6/sun &7- Nastaví počasí na slunečno"
+  - "&6/thunder &7- Nastaví počasí na bouřku"
+  - "&6/day &7- Nastaví den"
+  - "&6/night &7- Nastaví noc"
+  - "&6/home [set] &7- Teleportuje vás domů"
+  - "&6/freeze &7- Zmrazí hráče"
+  - "&6/rules &7- Zobrazí pravidla serveru"
+help-command-no-permission: "&cTento příkaz může použít pouze hráč v hře nebo konzole."
+
+# HEAL
+heal-command-self-success: "&aByl jsi úspěšně dohealován!"
+heal-command-other-success: "&aHráč %target% byl úspěšně dohealován!"
+heal-command-player-not-online: "&cTento hráč není online!"
+heal-command-console-missing-argument: "&cMusíš zadat jméno hráče jako argument z konzole nebo command blocku."
+
+# RELOAD
+reload-command-message: "&aPianoCore byl úspěšně reloadnut!"
+
+# OSTATNÍ
+die-command-success: "&cÚspěšně sis vzal život!"
+discord-command-message: "&bPozvánka na náš server: https://discord.gg/..."
+ping-command-message: "&bPing: %ping%ms"
+about-command-message:
+  - "&9&lO PianoCore:"
+  - "&bVerze: 1.0"
+  - "&3Vývojář pluginu: PianoDev_"
+web-command-message: "&bOdkaz na náš web: https://..."
+
+
+
+
+
+
+
+
+

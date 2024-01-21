@@ -7,64 +7,64 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.piano.joinleave.system.PianoCore;
 
 public class GodMode implements CommandExecutor {
+
+    private final PianoCore plugin;
+
+    public GodMode(PianoCore plugin) {
+        this.plugin = plugin;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("godmode")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 if (args.length == 0) {
-                    if (p.isInvulnerable()) {
-                        p.setInvulnerable(false);
-                        p.sendMessage(ChatColor.RED + "GodMode byl vypnut!");
-                    } else {
-                        p.setInvulnerable(true);
-                        p.sendMessage(ChatColor.GREEN + "GodMode byl zapnut!");
-                    }
+                    toggleGodMode(p);
                     return true;
                 } else if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
+                    Player target = Bukkit.getServer().getPlayerExact(args[0]);
 
                     if (target == null) {
-                        p.sendMessage("Tento hráč není online!");
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-player-not-online")));
                     } else {
-                        if (target.isInvulnerable()) {
-                            target.setInvulnerable(false);
-                            p.sendMessage(ChatColor.RED + "GodMode byl vypnut pro hráče " + target.getName() + "!");
-                        } else {
-                            target.setInvulnerable(true);
-                            p.sendMessage(ChatColor.GREEN + "GodMode byl zapnut pro hráče " + target.getName() + "!");
-                        }
+                        toggleGodMode(target);
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(target.isInvulnerable() ? "godmode-enabled-message-other" : "godmode-disabled-message-other"))
+                                .replace("{player}", target.getName()));
                         return true;
                     }
                 }
             } else if (sender instanceof ConsoleCommandSender) {
                 if (args.length == 1) {
-                    String playerName = args[0];
-                    Player target = Bukkit.getServer().getPlayerExact(playerName);
+                    Player target = Bukkit.getServer().getPlayerExact(args[0]);
 
                     if (target == null) {
-                        sender.sendMessage("Tento hráč není online!");
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-player-not-online")));
                     } else {
-                        if (target.isInvulnerable()) {
-                            target.setInvulnerable(false);
-                            sender.sendMessage("GodMode byl vypnut pro hráče " + target.getName() + "!");
-                        } else {
-                            target.setInvulnerable(true);
-                            sender.sendMessage("GodMode byl zapnut pro hráče " + target.getName() + "!");
-                        }
+                        toggleGodMode(target);
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString(target.isInvulnerable() ? "godmode-enabled-message-other" : "godmode-disabled-message-other"))
+                                .replace("{player}", target.getName()));
                         return true;
                     }
                 } else {
-                    sender.sendMessage("Musíš zadat jméno hráče jako argument z konzole.");
-
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-usage-message")));
                     return true;
                 }
             }
         }
         return false;
     }
-}
 
+    private void toggleGodMode(Player player) {
+        if (player.isInvulnerable()) {
+            player.setInvulnerable(false);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-disabled-message")));
+        } else {
+            player.setInvulnerable(true);
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-enabled-message")));
+        }
+    }
+}

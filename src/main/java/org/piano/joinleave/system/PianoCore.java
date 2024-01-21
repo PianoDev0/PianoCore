@@ -7,8 +7,6 @@ import org.piano.joinleave.commands.*;
 import org.piano.joinleave.events.DeathMessage;
 import org.piano.joinleave.events.PlayerConnection;
 
-import javax.security.auth.login.LoginException;
-
 public final class PianoCore extends JavaPlugin {
 
     public static PianoCore Instance;
@@ -21,30 +19,36 @@ public final class PianoCore extends JavaPlugin {
 
 
         PluginManager pm = Bukkit.getPluginManager();
-        pm.registerEvents(new PlayerConnection(), PianoCore.Instance);
-        pm.registerEvents(new DeathMessage(), PianoCore.Instance);
+        pm.registerEvents(new PlayerConnection(this), PianoCore.Instance);
+        pm.registerEvents(new DeathMessage(this), PianoCore.Instance);
 
-        getCommand("godmode").setExecutor(new GodMode());
-        getCommand("gmc").setExecutor(new Gamemodes());
-        getCommand("gms").setExecutor(new Gamemodes());
-        getCommand("gmsp").setExecutor(new Gamemodes());
-        getCommand("fly").setExecutor(new Fly());
-        getCommand("heal").setExecutor(new Heal());
-        getCommand("flyspeed").setExecutor(new Flyspeed());
-        getCommand("die").setExecutor(new Other());
-        getCommand("ping").setExecutor(new Other());
-        getCommand("discord").setExecutor(new Other());
-        getCommand("web").setExecutor(new Other());
-        getCommand("about").setExecutor(new Other());
-        getCommand("inventory").setExecutor(new Inventory());
-        getCommand("help").setExecutor(new Help());
-        getCommand("day").setExecutor(new Time());
-        getCommand("night").setExecutor(new Time());
-        getCommand("sun").setExecutor(new Weather());
-        getCommand("thunder").setExecutor(new Weather());
-        getCommand("home").setExecutor(new Home());
-        getCommand("freeze").setExecutor(new Freeze());
-        getCommand("rules").setExecutor(new Rules());
+        saveDefaultConfig();
+        getLogger().info("Loaded configuration:");
+        getConfig().getKeys(true).forEach(key -> getLogger().info(key + ": " + getConfig().get(key)));
+
+
+        getCommand("godmode").setExecutor(new GodMode(this));
+        getCommand("gmc").setExecutor(new Gamemodes(this));
+        getCommand("gms").setExecutor(new Gamemodes(this));
+        getCommand("gmsp").setExecutor(new Gamemodes(this));
+        getCommand("fly").setExecutor(new Fly(this));
+        getCommand("heal").setExecutor(new Heal(this));
+        getCommand("flyspeed").setExecutor(new Flyspeed(this));
+        getCommand("die").setExecutor(new Other(this));
+        getCommand("ping").setExecutor(new Other(this));
+        getCommand("discord").setExecutor(new Other(this));
+        getCommand("web").setExecutor(new Other(this));
+        getCommand("about").setExecutor(new Other(this));
+        getCommand("inventory").setExecutor(new Inventory(this));
+        getCommand("help").setExecutor(new Help(this));
+        getCommand("day").setExecutor(new Time(this));
+        getCommand("night").setExecutor(new Time(this));
+        getCommand("sun").setExecutor(new Weather(this));
+        getCommand("thunder").setExecutor(new Weather(this));
+        getCommand("home").setExecutor(new Home(this));
+        getCommand("freeze").setExecutor(new Freeze(this));
+        getCommand("rules").setExecutor(new Rules(this));
+        getCommand("pireload").setExecutor(new Reload(this));
     }
     @Override
     public void onDisable() {

@@ -101,3 +101,8 @@ commands:
   rules:
     description: 'Vypíše pravidla'
     usage: /<command>
+  pireload:
+    description: 'Vypíše pravidla'
+    usage: /<command>
+    permission: pianocore.reload
+    permission-message: 'Na toto nemáš oprávnění!'

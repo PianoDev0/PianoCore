@@ -4,8 +4,15 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
 import org.bukkit.entity.Player;
+import org.piano.joinleave.system.PianoCore;
 
 public class Heal implements CommandExecutor {
+
+    private final PianoCore plugin;
+
+    public Heal(PianoCore plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -20,13 +27,13 @@ public class Heal implements CommandExecutor {
                     target = Bukkit.getServer().getPlayerExact(playerName);
 
                     if (target == null) {
-                        p.sendMessage(ChatColor.RED + "Tento hráč není online!");
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal-command-player-not-online")));
                         return true;
                     }
                 } else {
                     p.setHealth(p.getMaxHealth());
                     p.setFoodLevel(40);
-                    p.sendMessage(ChatColor.GREEN + "Byl jsi úspěšně dohealován!");
+                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal-command-self-success")));
                     return true;
                 }
             } else if (sender instanceof ConsoleCommandSender || sender instanceof BlockCommandSender) {
@@ -35,11 +42,11 @@ public class Heal implements CommandExecutor {
                     target = Bukkit.getServer().getPlayerExact(playerName);
 
                     if (target == null) {
-                        sender.sendMessage("Tento hráč není online!");
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal-command-player-not-online")));
                         return true;
                     }
                 } else {
-                    sender.sendMessage("Musíš zadat jméno hráče jako argument z konzole nebo command blocku.");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal-command-console-missing-argument")));
                     return true;
                 }
             }
@@ -47,7 +54,7 @@ public class Heal implements CommandExecutor {
             if (target != null) {
                 target.setHealth(target.getMaxHealth());
                 target.setFoodLevel(30);
-                sender.sendMessage(ChatColor.GREEN + "Hráč " + target.getName() + " byl úspěšně dohealován!");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("heal-command-other-success").replace("%target%", target.getName())));
                 return true;
             }
         }

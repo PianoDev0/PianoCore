@@ -1,11 +1,18 @@
 package org.piano.joinleave.commands;
+
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
+import org.piano.joinleave.system.PianoCore;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -13,6 +20,38 @@ import java.util.UUID;
 public class Home implements CommandExecutor {
 
     private final Map<UUID, Location> playerHomes = new HashMap<>();
+    private final File configFile;
+    private final FileConfiguration config;
+
+    public Home(PianoCore plugin) {
+        this.configFile = new File(plugin.getDataFolder(), "homes.yml");
+        this.config = YamlConfiguration.loadConfiguration(configFile);
+        loadHomes();
+    }
+
+    private void loadHomes() {
+        ConfigurationSection homesSection = config.getConfigurationSection("homes");
+        if (homesSection != null) {
+            for (String uuidString : homesSection.getKeys(false)) {
+                UUID playerUUID = UUID.fromString(uuidString);
+                Location homeLocation = (Location) homesSection.get(uuidString);
+                playerHomes.put(playerUUID, homeLocation);
+            }
+        }
+    }
+
+    private void saveHomes() {
+        ConfigurationSection homesSection = config.createSection("homes");
+        for (Map.Entry<UUID, Location> entry : playerHomes.entrySet()) {
+            homesSection.set(entry.getKey().toString(), entry.getValue());
+        }
+
+        try {
+            config.save(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -34,6 +73,7 @@ public class Home implements CommandExecutor {
                 }
             } else if (args.length == 1 && args[0].equalsIgnoreCase("set")) {
                 playerHomes.put(playerUUID, player.getLocation());
+                saveHomes(); // Save homes to the configuration file
                 player.sendMessage(ChatColor.GREEN + "Domov byl nastaven na tuto pozici.");
             } else {
                 player.sendMessage(ChatColor.RED + "Použití: /home [set]");

@@ -1,11 +1,12 @@
 package org.piano.joinleave.commands;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
+import org.piano.joinleave.system.PianoCore;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -13,6 +14,11 @@ import java.util.UUID;
 public class Freeze implements CommandExecutor {
 
     private final Set<UUID> frozenPlayers = new HashSet<>();
+    private final PianoCore plugin;
+
+    public Freeze(PianoCore plugin) {
+        this.plugin = plugin;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -24,17 +30,20 @@ public class Freeze implements CommandExecutor {
 
                 if (isPlayerFrozen(targetUUID)) {
                     unfreezePlayer(targetUUID);
-                    target.sendMessage(ChatColor.GREEN + "Byl(a) jsi odmrazen(a).");
-                    sender.sendMessage(ChatColor.GREEN + target.getName() + " byl(a) odmrazen(a).");
+                    target.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("freeze-unfrozen-message"))
+                            .replace("{player}", target.getName()));
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("freeze-unfrozen-message"))
+                            .replace("{player}", target.getName()));
                 } else {
                     freezePlayer(targetUUID);
-                    sender.sendMessage(ChatColor.RED + target.getName() + " byl(a) zamrazen(a).");
+                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("freeze-frozen-message"))
+                            .replace("{player}", target.getName()));
                 }
             } else {
-                sender.sendMessage(ChatColor.RED + "Hráč s tímto jménem není online.");
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("freeze-player-not-online")));
             }
         } else {
-            sender.sendMessage(ChatColor.RED + "Použití: /freeze <hráč>");
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("freeze-usage-message")));
         }
 
         return true;
