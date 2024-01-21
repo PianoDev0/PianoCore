@@ -84,6 +84,7 @@ help-command-list:
   - "&6/home [set] &7- Teleportuje vás domů"
   - "&6/freeze &7- Zmrazí hráče"
   - "&6/rules &7- Zobrazí pravidla serveru"
+  - "&6/pireload &7- Reloadne config a další soubory"
 help-command-no-permission: "&cTento příkaz může použít pouze hráč v hře nebo konzole."
 
 # HEAL
