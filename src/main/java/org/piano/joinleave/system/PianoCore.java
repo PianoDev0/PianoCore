@@ -23,10 +23,6 @@ public final class PianoCore extends JavaPlugin {
         pm.registerEvents(new DeathMessage(this), PianoCore.Instance);
 
         saveDefaultConfig();
-        getLogger().info("Loaded configuration:");
-        getConfig().getKeys(true).forEach(key -> getLogger().info(key + ": " + getConfig().get(key)));
-
-
         getCommand("godmode").setExecutor(new GodMode(this));
         getCommand("gmc").setExecutor(new Gamemodes(this));
         getCommand("gms").setExecutor(new Gamemodes(this));

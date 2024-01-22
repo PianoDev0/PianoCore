@@ -1,7 +1,7 @@
 name: PianoCore
 version: '${project.version}'
 main: org.piano.joinleave.system.PianoCore
-api-version: '1.19'
+api-version: '1.20'
 commands:
   die:
     description: 'Jednoduchá cesta jak si vzít život'
