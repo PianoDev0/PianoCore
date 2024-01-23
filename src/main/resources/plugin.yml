@@ -65,7 +65,7 @@ commands:
     usage: /<command>
     permission: pianocore.inventory
     permission-message: 'Na toto nemáš oprávnění!'
-  help:
+  pihelp:
     description: 'Vypíše příkazy'
     usage: /<command>
     permission: pianocore.help
@@ -79,6 +79,11 @@ commands:
     description: 'Nastaví bouřku'
     usage: /<command>
     permission: pianocore.weather
+    permission-message: 'Na toto nemáš oprávnění!'
+  rain:
+    description: 'Nastaví deštné počasí'
+    usage: /<command>
+    permission: pianocore.time
     permission-message: 'Na toto nemáš oprávnění!'
   day:
     description: 'Nastaví den'
@@ -106,3 +111,32 @@ commands:
     usage: /<command>
     permission: pianocore.reload
     permission-message: 'Na toto nemáš oprávnění!'
+  ban:
+    description: 'Způsob jak zabanovat hráče'
+    usage: /<command>
+    permission: pianocore.ban
+    permission-message: 'Na toto nemáš oprávnění!'
+  unban:
+    description: 'Způsob jak odbanovat hráče'
+    usage: /<command>
+    permission: pianocore.ban
+    permission-message: 'Na toto nemáš oprávnění!'
+  mute:
+    description: 'Způsob jak ztišit hráče'
+    usage: /<command>
+    permission: pianocore.mute
+    permission-message: 'Na toto nemáš oprávnění!'
+  unmute:
+    description: 'Způsob jak vypnout ztlumení hráče'
+    usage: /<command>
+    permission: pianocore.mute
+    permission-message: 'Na toto nemáš oprávnění!'
+  tpa:
+    description: 'Způsob jak teleportovat ke hráči'
+    usage: /<command><player>
+  tpaccept:
+    description: Accept teleportation request
+    usage: /<command>
+  tpdeny:
+    description: Deny teleportation request
+    usage: /<command>

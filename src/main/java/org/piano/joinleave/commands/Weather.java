@@ -20,28 +20,42 @@ public class Weather implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if ((command.getName().equalsIgnoreCase("sun") || command.getName().equalsIgnoreCase("thunder"))) {
+        if ((command.getName().equalsIgnoreCase("sun") || command.getName().equalsIgnoreCase("thunder") || command.getName().equalsIgnoreCase("rain"))) {
             if (sender instanceof Player || sender instanceof ConsoleCommandSender) {
                 Player p = (sender instanceof Player) ? (Player) sender : null;
 
                 World world = (p != null) ? p.getWorld() : Bukkit.getWorlds().get(0);
 
                 boolean isSunCommand = command.getName().equalsIgnoreCase("sun");
-                world.setStorm(!isSunCommand);
-                world.setThundering(isSunCommand);
+                boolean isThunderCommand = command.getName().equalsIgnoreCase("thunder");
+                boolean isRainCommand = command.getName().equalsIgnoreCase("rain");
 
-                String weatherType = isSunCommand ? "sunny" : "stormy";
+                if (isSunCommand || isThunderCommand || isRainCommand) {
+                    if (isThunderCommand) {
+                        world.setStorm(!isSunCommand);
+                        world.setThundering(!isSunCommand);
+                    } else if (isRainCommand) {
+                        world.setStorm(true);
+                        world.setThundering(false);
+                    } else { // isSunCommand
+                        world.setStorm(false);
+                        world.setThundering(false);
+                    }
 
-                if (p != null) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("weather-set-message-" + weatherType)));
-                } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("weather-set-message-" + weatherType)));
+                    String weatherType = isSunCommand ? "sunny" : (isThunderCommand ? "stormy" : "rainy");
+
+                    if (p != null) {
+                        p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("weather-set-message-" + weatherType)));
+                    } else {
+                        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("weather-set-message-" + weatherType)));
+                    }
+
+                    return true;
                 }
-
-                return true;
             }
         }
         return false;
     }
 }
+
 

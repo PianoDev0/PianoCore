@@ -20,7 +20,7 @@ public class Help implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (command.getName().equalsIgnoreCase("help")) {
+        if (command.getName().equalsIgnoreCase("pihelp")) {
             if (sender instanceof Player || sender instanceof ConsoleCommandSender) {
                 sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("help-command-title")));
                 List<String> commandList = plugin.getConfig().getStringList("help-command-list");

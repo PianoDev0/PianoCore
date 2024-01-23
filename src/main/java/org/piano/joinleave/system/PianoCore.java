@@ -11,18 +11,21 @@ public final class PianoCore extends JavaPlugin {
 
     public static PianoCore Instance;
 
+
     @Override
     public void onEnable() {
         // Plugin startup logic
+
         Instance = this;
         Bukkit.getConsoleSender().sendMessage("[PianoCore] Plugin byl správně načten!!");
-
 
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerConnection(this), PianoCore.Instance);
         pm.registerEvents(new DeathMessage(this), PianoCore.Instance);
 
+        getConfig().options().copyDefaults(true);
         saveDefaultConfig();
+
         getCommand("godmode").setExecutor(new GodMode(this));
         getCommand("gmc").setExecutor(new Gamemodes(this));
         getCommand("gms").setExecutor(new Gamemodes(this));
@@ -36,15 +39,17 @@ public final class PianoCore extends JavaPlugin {
         getCommand("web").setExecutor(new Other(this));
         getCommand("about").setExecutor(new Other(this));
         getCommand("inventory").setExecutor(new Inventory(this));
-        getCommand("help").setExecutor(new Help(this));
+        getCommand("pihelp").setExecutor(new Help(this));
         getCommand("day").setExecutor(new Time(this));
         getCommand("night").setExecutor(new Time(this));
         getCommand("sun").setExecutor(new Weather(this));
         getCommand("thunder").setExecutor(new Weather(this));
+        getCommand("rain").setExecutor(new Weather(this));
         getCommand("home").setExecutor(new Home(this));
         getCommand("freeze").setExecutor(new Freeze(this));
         getCommand("rules").setExecutor(new Rules(this));
         getCommand("pireload").setExecutor(new Reload(this));
+
     }
     @Override
     public void onDisable() {

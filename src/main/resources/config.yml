@@ -32,13 +32,14 @@ gamemode-set-message-other: "&aNastaveno na {gamemode} pro hráče {player}!"
 vanish-on-message: "&aVanish byl zapnut pro hráče {player}!"
 vanish-off-message: "&cVanish byl vypnut pro hráče {player}!"
 
-# ČAS
+# TIME
 time-set-message-day: "&aČas nastaven na denní!"
 time-set-message-night: "&aČas nastaven na noční!"
 
-# POČASÍ
-weather-set-message-sunny: "&aPočasí nastaveno na slunečné!"
-weather-set-message-stormy: "&aPočasí nastaveno na bouřlivé!"
+# WEATHER
+weather-set-message-sunny: '&aPočasí nastaveno na slunečno!'
+weather-set-message-stormy: '&aPočasí nastaveno na bouřkové!'
+weather-set-message-rainy: '&aPočasí nastaveno na deštivé!'
 
 # INVENTORY
 inventory-open-message-self: "&aOtevíráš svůj inventář."
@@ -79,12 +80,14 @@ help-command-list:
   - "&6/inventory &7- Otevře inventář hráče"
   - "&6/sun &7- Nastaví počasí na slunečno"
   - "&6/thunder &7- Nastaví počasí na bouřku"
+  - "&6/rain &7- Nstaví počasí na deštivé"
   - "&6/day &7- Nastaví den"
   - "&6/night &7- Nastaví noc"
   - "&6/home [set] &7- Teleportuje vás domů"
   - "&6/freeze &7- Zmrazí hráče"
   - "&6/rules &7- Zobrazí pravidla serveru"
   - "&6/pireload &7- Reloadne config a další soubory"
+
 help-command-no-permission: "&cTento příkaz může použít pouze hráč v hře nebo konzole."
 
 # HEAL
