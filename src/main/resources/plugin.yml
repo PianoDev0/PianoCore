@@ -111,32 +111,8 @@ commands:
     usage: /<command>
     permission: pianocore.reload
     permission-message: 'Na toto nemáš oprávnění!'
-  ban:
-    description: 'Způsob jak zabanovat hráče'
+  repairall:
+    description: Opraví všechny tvoje věci
     usage: /<command>
-    permission: pianocore.ban
-    permission-message: 'Na toto nemáš oprávnění!'
-  unban:
-    description: 'Způsob jak odbanovat hráče'
-    usage: /<command>
-    permission: pianocore.ban
-    permission-message: 'Na toto nemáš oprávnění!'
-  mute:
-    description: 'Způsob jak ztišit hráče'
-    usage: /<command>
-    permission: pianocore.mute
-    permission-message: 'Na toto nemáš oprávnění!'
-  unmute:
-    description: 'Způsob jak vypnout ztlumení hráče'
-    usage: /<command>
-    permission: pianocore.mute
-    permission-message: 'Na toto nemáš oprávnění!'
-  tpa:
-    description: 'Způsob jak teleportovat ke hráči'
-    usage: /<command><player>
-  tpaccept:
-    description: Accept teleportation request
-    usage: /<command>
-  tpdeny:
-    description: Deny teleportation request
-    usage: /<command>
+    permission: pianocore.repair
+    permission-message: Na toto nemáš oprávnění!

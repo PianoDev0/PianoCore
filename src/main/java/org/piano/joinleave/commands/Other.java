@@ -1,10 +1,12 @@
 package org.piano.joinleave.commands;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.piano.joinleave.system.PianoCore;
 
 public class Other implements CommandExecutor {
@@ -37,6 +39,13 @@ public class Other implements CommandExecutor {
                 p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("ping-command-message").replace("%ping%", String.valueOf(ping))));
                 return true;
             }
+        } else if (command.getName().equalsIgnoreCase("repairall")) {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
+                repairAllItems(p);
+                p.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("repairall-success-message"));
+                return true;
+            }
         } else if (command.getName().equalsIgnoreCase("about")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
@@ -53,5 +62,18 @@ public class Other implements CommandExecutor {
             }
         }
         return false;
+    }
+
+    private void repairAllItems(Player player) {
+        for (ItemStack item : player.getInventory().getContents()) {
+            if (item != null && item.getType() != Material.AIR) {
+                item.setDurability((short) 0);
+            }
+        }
+
+        ItemStack handItem = player.getInventory().getItemInMainHand();
+        if (handItem != null && handItem.getType() != Material.AIR) {
+            handItem.setDurability((short) 0);
+        }
     }
 }
