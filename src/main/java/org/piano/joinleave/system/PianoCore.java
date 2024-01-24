@@ -41,6 +41,7 @@ public final class PianoCore extends JavaPlugin {
         getCommand("about").setExecutor(new Other(this));
         getCommand("inventory").setExecutor(new Inventory(this));
         getCommand("pihelp").setExecutor(new Help(this));
+        getCommand("vanish").setExecutor(new Vanish(this));
         getCommand("day").setExecutor(new Time(this));
         getCommand("night").setExecutor(new Time(this));
         getCommand("sun").setExecutor(new Weather(this));
