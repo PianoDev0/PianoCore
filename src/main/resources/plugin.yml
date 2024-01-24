@@ -116,3 +116,8 @@ commands:
     usage: /<command>
     permission: pianocore.repair
     permission-message: Na toto nemáš oprávnění!
+  repair:
+    description: Opraví věc kterou máš v ruce
+    usage: /<command>
+    permission: pianocore.repair
+    permission-message: Na toto nemáš oprávnění!

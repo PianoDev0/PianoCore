@@ -43,7 +43,14 @@ public class Other implements CommandExecutor {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
                 repairAllItems(p);
-                p.sendMessage(ChatColor.GREEN + plugin.getConfig().getString("repairall-success-message"));
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("repairall-success-message")));
+                return true;
+            }
+        } else if (command.getName().equalsIgnoreCase("repair")) {
+            if (sender instanceof Player) {
+                Player p = (Player) sender;
+                repairCurrentItem(p);
+                p.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("repair-success-message")));
                 return true;
             }
         } else if (command.getName().equalsIgnoreCase("about")) {
@@ -71,6 +78,13 @@ public class Other implements CommandExecutor {
             }
         }
 
+        ItemStack handItem = player.getInventory().getItemInMainHand();
+        if (handItem != null && handItem.getType() != Material.AIR) {
+            handItem.setDurability((short) 0);
+        }
+    }
+
+    private void repairCurrentItem(Player player) {
         ItemStack handItem = player.getInventory().getItemInMainHand();
         if (handItem != null && handItem.getType() != Material.AIR) {
             handItem.setDurability((short) 0);

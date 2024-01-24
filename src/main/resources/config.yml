@@ -87,6 +87,7 @@ help-command-list:
   - "&6/freeze &7- Zmrazí hráče"
   - "&6/rules &7- Zobrazí pravidla serveru"
   - "&6/pireload &7- Reloadne config a další soubory"
+  - "&6/repair &7- Opraví věc v tvojí ruce"
   - "&6/repairall &7- Opraví všechny tvoje věci"
 
 help-command-no-permission: "&cTento příkaz může použít pouze hráč v hře nebo konzole."
@@ -105,6 +106,7 @@ reload-command-message: "&aPianoCore byl úspěšně reloadnut!"
 die-command-success: "&cÚspěšně sis vzal život!"
 discord-command-message: "&bPozvánka na náš server: https://discord.gg/..."
 repairall-success-message: "§aVšechny tvoje předměty byly opraveny."
+repair-success-message: "&aVáš aktuální nástroj nebo zbroj byl opraven."
 ping-command-message: "&bPing: %ping%ms"
 about-command-message:
   - "&9&lO PianoCore:"

@@ -37,6 +37,7 @@ public final class PianoCore extends JavaPlugin {
         getCommand("ping").setExecutor(new Other(this));
         getCommand("discord").setExecutor(new Other(this));
         getCommand("web").setExecutor(new Other(this));
+        getCommand("repair").setExecutor(new Other(this));
         getCommand("repairall").setExecutor(new Other(this));
         getCommand("about").setExecutor(new Other(this));
         getCommand("inventory").setExecutor(new Inventory(this));
