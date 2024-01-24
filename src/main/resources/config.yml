@@ -66,7 +66,7 @@ help-command-title: "&aSeznam příkazů:"
 help-command-list:
   - "&6/about &7- Napíše info o pluginu"
   - "&6/day &7- Nastaví den"
-  - "&6/death &7- Vypíše smrt hráče"
+  - "&6/die &7- Nejrychlejší cesta jak si vzít život"
   - "&6/discord &7- Discord Invite"
   - "&6/fly &7- Zapne/vypne létání"
   - "&6/flyspeed &7- Nastaví rychlost létání"
@@ -88,9 +88,6 @@ help-command-list:
   - "&6/rules &7- Zobrazí pravidla serveru"
   - "&6/sun &7- Nastaví počasí na slunečno"
   - "&6/thunder &7- Nastaví počasí na bouřku"
-  - "&6/tpa &7- Pošle teleportační žádost"
-  - "&6/tpaccept &7- Přijme teleportační žádost"
-  - "&6/tpdeny &7- Odmítne teleportační žádost"
   - "&6/vanish &7- Zapne vanish"
   - "&6/web &7- Odkaz na náš web"
 
