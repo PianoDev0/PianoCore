@@ -5,119 +5,119 @@ api-version: '1.20'
 commands:
   die:
     description: 'Jednoduchá cesta jak si vzít život'
+    usage: '/<command>'
     permission: pianocore.die
     permission-message: 'Na toto nemáš permise!'
-    usage: /<command>
   discord:
     description: 'Discord Invite'
-    usage: /<command>
+    usage: '/<command>'
   ping:
     description: 'vypíše ping serveru'
-    usage: /<command>
+    usage: '/<command>'
   godmode:
     description: 'zapne godmode'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.godmode
     permission-message: 'Na toto nemáš permise!'
   vanish:
     description: 'zapne vanish'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.vanish
     permission-message: 'Na toto nemáš permise!'
   heal:
     description: 'vyhealuje hráče'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.Heal
     permission-message: 'Na toto nemáš permise!'
   gmc:
     description: 'nastaví creative'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.gm
     permission-message: 'Na toto nemáš permise!'
   gms:
     description: 'nastaví survival'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.gm
     permission-message: 'Na toto nemáš permise!'
   gmsp:
     description: 'nastaví spectator'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.gm
     permission-message: 'Na toto nemáš permise!'
   fly:
     description: 'zapne/vypne létání'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.fly
     permission-message: 'Na toto nemáš permise!'
   flyspeed:
     description: 'nastaví rychlost létání'
-    usage: /<command> <rychlost>
+    usage: '/<command> <rychlost>'
     permission: pianocore.flyspeed
     permission-message: 'Na toto nemáš permise!'
   about:
     description: 'Napíše info o pluginu'
-    usage: /<command>
+    usage: '/<command>'
   web:
     description: 'Odkaz na náš web'
-    usage: /<command>
+    usage: '/<command>'
   inventory:
     description: 'Otevře inventář hráče'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.inventory
     permission-message: 'Na toto nemáš oprávnění!'
   pihelp:
     description: 'Vypíše příkazy'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.help
     permission-message: 'Na toto nemáš oprávnění!'
   sun:
     description: 'Nastaví slunečno'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.weather
     permission-message: 'Na toto nemáš oprávnění!'
   thunder:
     description: 'Nastaví bouřku'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.weather
     permission-message: 'Na toto nemáš oprávnění!'
   rain:
     description: 'Nastaví deštné počasí'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.time
     permission-message: 'Na toto nemáš oprávnění!'
   day:
     description: 'Nastaví den'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.time
     permission-message: 'Na toto nemáš oprávnění!'
   night:
     description: 'Nastaví noc'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.time
     permission-message: 'Na toto nemáš oprávnění!'
   home:
     description: 'Teleportuje vás k domu'
-    usage: /<command>
+    usage: '/<command>'
   freeze:
     description: 'Zamrazí hráče'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.freeze
     permission-message: 'Na toto nemáš oprávnění!'
   rules:
     description: 'Vypíše pravidla'
-    usage: /<command>
+    usage: '/<command>'
   pireload:
     description: 'Reloadne config a další soubory'
-    usage: /<command>
+    usage: '/<command>'
     permission: pianocore.reload
     permission-message: 'Na toto nemáš oprávnění!'
   repairall:
-    description: Opraví všechny tvoje věci
-    usage: /<command>
+    description: 'Opraví všechny tvoje věci'
+    usage: '/<command>'
     permission: pianocore.repair
-    permission-message: Na toto nemáš oprávnění!
+    permission-message: 'Na toto nemáš oprávnění!'
   repair:
-    description: Opraví věc kterou máš v ruce
-    usage: /<command>
+    description: 'Opraví věc kterou máš v ruce'
+    usage: '/<command>'
     permission: pianocore.repair
-    permission-message: Na toto nemáš oprávnění!
+    permission-message: 'Na toto nemáš oprávnění!'
