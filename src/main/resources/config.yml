@@ -103,16 +103,12 @@ heal-command-console-missing-argument: "&cMusíš zadat jméno hráče jako argu
 reload-command-message: "&aPianoCore byl úspěšně reloadnut!"
 
 
-# OSTATNÍ
+# OTHER
 die-command-success: "&cÚspěšně sis vzal život!"
 discord-command-message: "&bPozvánka na náš server: https://discord.gg/..."
 repairall-success-message: "§aVšechny tvoje předměty byly opraveny."
 repair-success-message: "&aVáš aktuální nástroj nebo zbroj byl opraven."
 ping-command-message: "&bPing: %ping%ms"
-about-command-message:
-  - "&9&lO PianoCore:"
-  - "&bVerze: 1.0"
-  - "&3Vývojář pluginu: PianoDev_"
 web-command-message: "&bOdkaz na náš web: https://..."
 
 

@@ -49,9 +49,6 @@ public class GodMode implements CommandExecutor {
                                 .replace("{player}", target.getName()));
                         return true;
                     }
-                } else {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("godmode-usage-message")));
-                    return true;
                 }
             }
         }

@@ -5,6 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.piano.joinleave.system.PianoCore;
@@ -51,9 +52,15 @@ public class Other implements CommandExecutor {
         } else if (command.getName().equalsIgnoreCase("about")) {
             if (sender instanceof Player) {
                 Player p = (Player) sender;
-                for (String line : plugin.getConfig().getStringList("about-command-message")) {
-                    p.sendMessage(ChatColor.translateAlternateColorCodes('&', line));
-                }
+                p.sendMessage("§1§lABOUT PIANOLOBBY: ");
+                p.sendMessage("§BVERSION: 1.1 ");
+                p.sendMessage("§3PLUGIN BY: PianoDev_ ");
+                return true;
+            }else if(sender instanceof ConsoleCommandSender) {
+                ConsoleCommandSender c = (ConsoleCommandSender) sender;
+                c.sendMessage("§1§lABOUT PIANOCORE: ");
+                c.sendMessage("§BVERSION: 1.1 ");
+                c.sendMessage("§3PLUGIN BY: PianoDev_ ");
                 return true;
             }
         } else if (command.getName().equalsIgnoreCase("web")) {
